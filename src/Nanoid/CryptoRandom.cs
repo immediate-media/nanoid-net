@@ -27,6 +27,7 @@ public class CryptoRandom : Random
     {
         if (buffer == null)
             throw new ArgumentNullException(nameof(buffer));
+
         _r.GetBytes(buffer);
     }
 
@@ -58,8 +59,10 @@ public class CryptoRandom : Random
     {
         if (minValue > maxValue)
             throw new ArgumentOutOfRangeException(nameof(minValue));
+
         if (minValue == maxValue)
             return minValue;
+
         var range = (long)maxValue - minValue;
         return (int)((long)Math.Floor(NextDouble() * range) + minValue);
     }
@@ -83,6 +86,7 @@ public class CryptoRandom : Random
     {
         if (maxValue < 0)
             throw new ArgumentOutOfRangeException(nameof(maxValue));
+
         return Next(0, maxValue);
     }
 }
